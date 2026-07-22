@@ -1,9 +1,9 @@
 # --- build stage ---
 FROM node:22-slim AS build
 WORKDIR /app
-RUN corepack enable
+RUN npm install -g corepack@latest && corepack enable
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install --frozen-lockfile || pnpm install
+RUN pnpm install --frozen-lockfile
 COPY tsconfig.json ./
 COPY src ./src
 RUN pnpm build
@@ -12,9 +12,9 @@ RUN pnpm build
 FROM node:22-slim AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
-RUN corepack enable
+RUN npm install -g corepack@latest && corepack enable
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install --prod --frozen-lockfile || pnpm install --prod
+RUN pnpm install --prod --frozen-lockfile
 COPY --from=build /app/dist ./dist
 USER node
 EXPOSE 4100

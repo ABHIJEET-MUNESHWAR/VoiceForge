@@ -2,6 +2,7 @@
   "name": "voiceforge",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.7.0",
   "description": "Production-grade voice AI agent that answers calls and books home-service jobs (Twilio + Deepgram + ElevenLabs behind ports).",
   "type": "module",
   "engines": {
