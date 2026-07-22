@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "VoiceForge",
+    "description": "Voice AI agent that answers calls and books home-service jobs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4100" },
+    { "key": "callId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Metrics",
+      "request": { "method": "GET", "url": "{{baseUrl}}/metrics" }
+    },
+    {
+      "name": "Start call",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.collectionVariables.set('callId', pm.response.json().callId);"
+            ]
+          }
+        }
+      ],
+      "request": { "method": "POST", "url": "{{baseUrl}}/calls" }
+    },
+    {
+      "name": "Turn: name",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "content-type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"text\":\"my name is Maria Lopez\"}" },
+        "url": "{{baseUrl}}/calls/{{callId}}/turn"
+      }
+    },
+    {
+      "name": "Turn: phone",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "content-type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"text\":\"call me on 555 246 8100\"}" },
+        "url": "{{baseUrl}}/calls/{{callId}}/turn"
+      }
+    },
+    {
+      "name": "Turn: address",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "content-type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"text\":\"I'm at 88 Willow Lane\"}" },
+        "url": "{{baseUrl}}/calls/{{callId}}/turn"
+      }
+    },
+    {
+      "name": "Turn: problem",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "content-type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"text\":\"my AC stopped working\"}" },
+        "url": "{{baseUrl}}/calls/{{callId}}/turn"
+      }
+    },
+    {
+      "name": "Turn: urgency",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "content-type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"text\":\"it is an emergency\"}" },
+        "url": "{{baseUrl}}/calls/{{callId}}/turn"
+      }
+    },
+    {
+      "name": "Turn: confirm",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "content-type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"text\":\"yes please book it\"}" },
+        "url": "{{baseUrl}}/calls/{{callId}}/turn"
+      }
+    },
+    {
+      "name": "Call snapshot",
+      "request": { "method": "GET", "url": "{{baseUrl}}/calls/{{callId}}" }
+    }
+  ]
+}

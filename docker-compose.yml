@@ -1,0 +1,30 @@
+services:
+  voiceforge:
+    build: .
+    ports:
+      - '4100:4100'
+    environment:
+      - PORT=4100
+      - VOICE_PROVIDER=mock
+      - LOG_LEVEL=info
+
+  prometheus:
+    image: prom/prometheus:latest
+    profiles: ['monitoring']
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/alerts.yml:/etc/prometheus/alerts.yml:ro
+    depends_on:
+      - voiceforge
+
+  grafana:
+    image: grafana/grafana:latest
+    profiles: ['monitoring']
+    ports:
+      - '3001:3000'
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+    depends_on:
+      - prometheus
