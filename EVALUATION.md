@@ -23,20 +23,19 @@ offline and is covered by 41 tests at ~94% coverage.
 | 12 | GenAI / Agentic AI | 🟡 | Agentic turn loop with tool use (book/SMS); `NluPort` swappable for an LLM |
 | 13 | Idiomatic code | ✅ | Strict TS, NodeNext, `verbatimModuleSyntax`, no `any` on boundaries |
 | 14 | Generics | ✅ | `withRetry<T>`, `withTimeout<T>`, generic metric helpers |
-| 15 | Anchor / Solana | ⬜ | Not applicable — off-chain voice service |
-| 16 | Performance | ✅ | O(1) prompt planning; constant-time slot extraction; latency histograms |
-| 17 | Async runtime discipline | ✅ | Fully async I/O; no blocking in the turn loop |
-| 18 | Parallel/concurrent/batch | 🟡 | Independent calls are isolated sessions; STT/TTS awaited per turn by design |
-| 19 | Logging & observability | ✅ | Pino structured logs, Prometheus metrics, alert rules |
-| 20 | Edge cases | ✅ | Negative confirm, booking failure, no-tech, escalation, barge-in tested |
-| 21 | Composability | ✅ | Providers injected via `createApp(deps)` |
-| 22 | Clean interfaces | ✅ | Narrow ports, explicit DTOs |
-| 23 | Compile-time safety | ✅ | State machine + typed IDs prevent illegal transitions |
-| 24 | Benchmarks / complexity | 🟡 | Complexity table in README; latency histograms exported |
-| 25 | CI/CD | ✅ | `.github/workflows/ci.yml`: typecheck + build + coverage + docker build |
-| 26 | Docker | ✅ | Multi-stage `Dockerfile`, non-root, healthcheck; `docker-compose.yml` |
-| 27 | Postman | ✅ | Full booking-call collection with chained `callId` |
-| 28 | Self-evaluation | ✅ | This document |
+| 15 | Performance | ✅ | O(1) prompt planning; constant-time slot extraction; latency histograms |
+| 16 | Async runtime discipline | ✅ | Fully async I/O; no blocking in the turn loop |
+| 17 | Parallel/concurrent/batch | 🟡 | Independent calls are isolated sessions; STT/TTS awaited per turn by design |
+| 18 | Logging & observability | ✅ | Pino structured logs, Prometheus metrics, alert rules |
+| 19 | Edge cases | ✅ | Negative confirm, booking failure, no-tech, escalation, barge-in tested |
+| 20 | Composability | ✅ | Providers injected via `createApp(deps)` |
+| 21 | Clean interfaces | ✅ | Narrow ports, explicit DTOs |
+| 22 | Compile-time safety | ✅ | State machine + typed IDs prevent illegal transitions |
+| 23 | Benchmarks / complexity | 🟡 | Complexity table in README; latency histograms exported |
+| 24 | CI/CD | ✅ | `.github/workflows/ci.yml`: typecheck + build + coverage + docker build |
+| 25 | Docker | ✅ | Multi-stage `Dockerfile`, non-root, healthcheck; `docker-compose.yml` |
+| 26 | Postman | ✅ | Full booking-call collection with chained `callId` |
+| 27 | Self-evaluation | ✅ | This document |
 
 ## Honest gaps
 

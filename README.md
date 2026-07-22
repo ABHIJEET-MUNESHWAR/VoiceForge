@@ -175,5 +175,3 @@ Docker: `docker compose up --build` (add `--profile monitoring` for Prometheus +
 | Testing (≥85%) | 41 tests, 94% coverage |
 | Docker / CI | multi-stage `Dockerfile`, `.github/workflows/ci.yml` |
 | Postman | `postman/VoiceForge.postman_collection.json` |
-
-> Guideline #15 (Anchor/Solana) is not applicable — VoiceForge is an off-chain voice service.
